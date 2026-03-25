@@ -13,7 +13,7 @@ Práctica 2 (20%) - Contenerización y orquestación de una API REST con Docker 
 
 ## Video de evidencia
 
-- YouTube: **https://youtu.be/WxDInPieZRQ**
+- YouTube: **https://www.youtube.com/watch?v=L33mdpuB_vU**
 
 ## Proyecto desplegado
 
