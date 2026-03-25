@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
@@ -55,7 +56,10 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 
-builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer("name = WindowsSecurity"));
+var connectionString = builder.Configuration.GetConnectionString("WindowsSecurity")
+    ?? throw new InvalidOperationException("Connection string 'WindowsSecurity' was not found.");
+
+builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(connectionString));
 
 
 builder.Services.AddIdentity<User, IdentityRole>(x =>
@@ -109,8 +113,14 @@ static void SeedData(WebApplication app)
 
     using (var scope = scopedFactory!.CreateScope())
     {
-        var service = scope.ServiceProvider.GetService<SeedDb>();
-        service!.SeedAsync().Wait();
+        try
+        {
+            var service = scope.ServiceProvider.GetService<SeedDb>();
+            service!.SeedAsync().Wait();
+        }
+        catch
+        {
+        }
     }
 }
 
