@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tradingjournal-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tradingjournal-api
+  template:
+    metadata:
+      labels:
+        app: tradingjournal-api
+    spec:
+      containers:
+        - name: tradingjournal-api
+          image: tradingjournal-api:local
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+            - name: ASPNETCORE_URLS
+              value: http://+:8080
+            - name: SA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: tradingjournal-secrets
+                  key: SA_PASSWORD
+            - name: ConnectionStrings__WindowsSecurity
+              value: Server=sqlserver,1433;Database=TradingJournal;User Id=sa;Password=$(SA_PASSWORD);Encrypt=False;TrustServerCertificate=True;
