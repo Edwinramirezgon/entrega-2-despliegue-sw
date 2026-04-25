@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/ebc6c297-c800-4610-93e2-aaceeed13e63/resourceGroups/appsvc_windows_brazilsouth/providers/Microsoft.Web/sites/tradingjournal-api",
+    "appService.deploySubpath": "TradingJournal\\TradingJournal.API"
+}
