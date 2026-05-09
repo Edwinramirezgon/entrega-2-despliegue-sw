@@ -25,8 +25,8 @@
 |---|---|
 | API Local (IIS) | `http://localhost:8080` |
 | Frontend Local (IIS) | `http://localhost:8081` |
-| API Azure | `https://tradingjournal-api-bsa5cfdggthmdgfr.brazilsouth-01.azurewebsites.net` |
-| Frontend Azure | `https://tradingjournal-web-cxg5hhcxhue6g3a8.brazilsouth-01.azurewebsites.net` |
+| API Azure | `https://backendtrading-huhbd4gyd0fcepaa.brazilsouth-01.azurewebsites.net` |
+| Frontend Azure | `https://frontendtrad-b8c4cceue4crbfhu.brazilsouth-01.azurewebsites.net` |
 
 ---
 
